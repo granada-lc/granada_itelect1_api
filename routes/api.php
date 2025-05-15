@@ -2,13 +2,18 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AuthController;
 
-Route::prefix('products')->group(function(){ // Group routes under the 'products' prefix
-    Route::get('/', [ProductController::class, 'index']); // Route for getting all products
-    Route::post('/', [ProductController::class, 'store']); // Route for creating a new product
-    Route::get('{id}', [ProductController::class, 'show']); // Route for getting a specific product by ID
-    Route::put('{id}', [ProductController::class, 'update']); // Route for updating a product by ID
-    Route::delete('{id}', [ProductController::class, 'destroy']); // Route for deleting a product by ID
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::get('{id}', [ProductController::class, 'show']);
+    Route::put('{id}', [ProductController::class, 'update']);
+    Route::delete('{id}', [ProductController::class, 'destroy']);
 });
 
-Route::get('categories/{id}/products', [CategoryController::class, 'products']); // Route for getting products by category ID
+Route::get('categories/{id}/products', [CategoryController::class, 'products']);
+Route::get('categories', [CategoryController::class, 'index']);
+
+
+Route::post('/auth/login', [AuthController::class, 'login']);

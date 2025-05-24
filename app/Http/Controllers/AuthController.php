@@ -12,6 +12,7 @@ class AuthController extends Controller
     {
         $user = Userinfo::where('username', $request->username)->first();
 
+
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'Invalid login credentials',

@@ -36,7 +36,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->user_id = $request->user_id;
 
-        // ✅ Correct image upload
+        
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('products', 'public');
             $product->image_path = $path;
